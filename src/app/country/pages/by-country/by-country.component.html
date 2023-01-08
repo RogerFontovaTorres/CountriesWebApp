@@ -2,16 +2,9 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form autocomplete="off" (ngSubmit)="search()">
-            <input 
-                type="text"
-                name="searchCountry"
-                class="form-control"
-                [(ngModel)]="searchCountry"
-                placeholder="Search country"
-                >
-
-        </form>
+        <app-country-input
+            (onEnter)="search($event)"
+        ></app-country-input>
     </div>
 </div>
 <hr>
@@ -22,31 +15,6 @@
 
 <div class="row" *ngIf="!thereIsError && countries.length > 0">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Flag</th>
-                    <th>Name</th>
-                    <th>Population</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let country of countries; let i = index">
-                    <td>{{i + 1}}</td>
-                    <td> 
-                        <img class="small-flag" src="{{country.flags.png}}">
-                    </td>
-                    <td>{{country.name.common}}</td>
-                    <td> {{country.population | number}} </td>
-                    <td>
-
-                        <a [routerLink]="['/country/', country.cca2]">See</a>
-                    </td>
-                </tr>
-            </tbody>
-
-        </table>
+        <app-country-table [countries]="countries"></app-country-table>
     </div>
 </div>

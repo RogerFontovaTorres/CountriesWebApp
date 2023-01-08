@@ -16,11 +16,11 @@
 </div>
 <hr>
 
-<div class="alert alert-danger">
-    Nothing found with that name.
+<div class="alert alert-danger" *ngIf="thereIsError">
+    No coincidence found with '{{searchCountry}}'.
 </div>
 
-<div class="row">
+<div class="row" *ngIf="!thereIsError">
     <div class="col">
         <table class="table table-hover">
             <thead>

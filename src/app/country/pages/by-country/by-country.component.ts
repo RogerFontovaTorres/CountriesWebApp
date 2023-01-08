@@ -9,14 +9,20 @@ import { CountryService } from '../../services/country.service';
 export class ByCountryComponent {
 
   searchCountry: string = "";
+  thereIsError: boolean = false;
 
   constructor(private countryService: CountryService){
   }
   
   search(){
+    this.thereIsError = false;
     this.countryService.searchCountry(this.searchCountry)
-      .subscribe( answer => {
+      .subscribe( (answer) => {
         console.log(answer);
+      }, (error) => {
+        this.thereIsError = true;
       });
+    
+
   }
 }

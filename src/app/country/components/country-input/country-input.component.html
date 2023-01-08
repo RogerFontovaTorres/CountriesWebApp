@@ -1,5 +1,10 @@
 <form autocomplete="off" (ngSubmit)="search()">
-    <input type="text" name="searchCountry" class="form-control" [(ngModel)]="searchCountry"
+    <input 
+        type="text" 
+        name="searchCountry" 
+        class="form-control" 
+        (input)="pressedKey()"
+        [(ngModel)]="searchCountry"
         placeholder="Search country">
 
 </form>

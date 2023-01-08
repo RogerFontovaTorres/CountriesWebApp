@@ -26,4 +26,9 @@ export class ByCountryComponent {
         this.thereIsError = true;
       });
   }
+
+  sugerences(text: string){
+    this.thereIsError = false;
+    
+  }
 }

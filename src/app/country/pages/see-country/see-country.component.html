@@ -1,1 +1,56 @@
-<p>see-country works!</p>
+<div class="alert alert-info" *ngIf="!country; else showCountry">
+    Wait please...
+</div>
+
+<ng-template #showCountry>
+    <div class="row">
+        <div class="col">
+            <h1>Country: <small>{{country.name.common}}</small></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <h3>
+                Flag
+            </h3>
+            <hr>
+            <img [src]="country.flags.png" class="img-thumbnail">
+        </div>
+        <div class="col">
+            <h3>Information</h3>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Population: </strong> {{country.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Alpha3 code: </strong> {{country.cca3}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Borders: </strong> {{country.borders}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Area: </strong> {{country.area}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Continent: </strong> {{country.continents}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <h3>Translations</h3>
+    <hr>
+    <div class="row">
+        <div class="col d-flex justify-content-evenly">
+            <span class="badge bg-primary">{{country.translations['spa'].official}}</span>
+            <span class="badge bg-primary">{{country.translations['rus'].official}}</span>
+            <span class="badge bg-primary">{{country.translations['fra'].official}}</span>
+            <span class="badge bg-primary">{{country.translations['ita'].official}}</span>
+            <span class="badge bg-primary">{{country.translations['jpn'].official}}</span>
+
+        </div>
+    </div>
+
+</ng-template>

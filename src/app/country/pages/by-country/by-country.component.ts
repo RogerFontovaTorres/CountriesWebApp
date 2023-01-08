@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CountryService } from '../../services/country.service';
+import { Country } from '../../interfaces/country.interfaces';
 
 @Component({
   selector: 'app-by-country',
@@ -10,6 +11,7 @@ export class ByCountryComponent {
 
   searchCountry: string = "";
   thereIsError: boolean = false;
+  countries: Country[] = [];
 
   constructor(private countryService: CountryService){
   }
@@ -22,7 +24,5 @@ export class ByCountryComponent {
       }, (error) => {
         this.thereIsError = true;
       });
-    
-
   }
 }

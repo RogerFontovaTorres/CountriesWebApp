@@ -33,11 +33,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>flag</td>
-                    <td>name</td>
-                    <td>1234</td>
+                <tr *ngFor="let country of countries; let i = index">
+                    <td>{{i}}</td>
+                    <td> 
+                        <img class="small-flag" src="{{country.flags.png}}">
+                    </td>
+                    <td>{{country.name.common}}</td>
+                    <td> {{country.population | number}} </td>
                     <td>
                         <a href="/country/cri">See</a>
                     </td>

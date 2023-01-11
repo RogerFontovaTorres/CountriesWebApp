@@ -1,4 +1,4 @@
-<h2>By Capital</h2>
+<h3>Search by Capital</h3>
 <hr>
 <div class="row">
     <div class="col">
@@ -15,7 +15,7 @@
     No coincidence found with '{{searchCountry}}'.
 </div>
 
-<div class="row" *ngIf="!thereIsError && countries.length > 0">
+<div class="row" *ngIf="!thereIsError && countries.length > 0" class="animate__animated animate__slideInUp animate__faster">
     <div class="col">
         <app-country-table [countries]="countries"></app-country-table>
     </div>

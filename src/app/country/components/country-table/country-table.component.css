@@ -1,3 +1,7 @@
 tr{
     vertical-align: center;
 }
+
+.tbody-tr{
+    cursor: pointer;
+}

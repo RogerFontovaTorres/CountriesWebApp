@@ -5,21 +5,16 @@
             <th>Flag</th>
             <th>Name</th>
             <th>Population</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let country of countries; let i = index" class="align-middle">
+        <tr [routerLink]="['/country/', country.cca2]" *ngFor="let country of countries; let i = index" class="align-middle tbody-tr">
             <td> {{i + 1}} </td>
             <td>
                 <img class="small-flag" src="{{country.flags.png}}">
             </td>
             <td> {{country.capital}} - {{country.name.common}}</td>
             <td> {{country.population | number}} </td>
-            <td>
-
-                <a [routerLink]="['/country/', country.cca2]">See</a>
-            </td>
         </tr>
     </tbody>
 

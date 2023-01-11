@@ -12,23 +12,42 @@ export class ByCountryComponent {
   searchCountry: string = "";
   thereIsError: boolean = false;
   countries: Country[] = [];
+  suggestedCountries: Country[] = [];
+  searchText: string = "";
+  showSuggerences: boolean = false;
 
-  constructor(private countryService: CountryService){
+  constructor(private countryService: CountryService) {
   }
-  
-  search(searchText: string){
+
+  search(searchText: string) {
     this.searchCountry = searchText;
     this.thereIsError = false;
     this.countryService.searchCountry(this.searchCountry)
-      .subscribe( (answer) => {
+      .subscribe((answer) => {
         this.countries = answer;
       }, (error) => {
         this.thereIsError = true;
       });
   }
 
-  sugerences(text: string){
+  sugerences(text: string) {
     this.thereIsError = false;
-    
+    this.searchText = text;
+    if (text !== "") {
+      this.showSuggerences = true;
+      this.countryService.searchCountry(text)
+        .subscribe(
+          countries => this.suggestedCountries = countries,
+          (err) => this.suggestedCountries = []
+        );
+
+    }else{
+      this.showSuggerences = false;
+    }
+  }
+
+  searchSuggested(text: string) {
+    this.search(text);
+    this.showSuggerences = false;
   }
 }

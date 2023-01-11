@@ -18,7 +18,7 @@ export class CountryService {
 
   searchCountry(name: string): Observable<Country[]>{
     const url = `${this.apiUrl}/name/${name}`;
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, {params: this.httpParams});
   }
 
   searchCapital(name: string): Observable<Country[]>{
@@ -28,7 +28,7 @@ export class CountryService {
 
   getCountryByAlpha(id: string): Observable<Country> {
     const url = `${this.apiUrl}/alpha/${id}`;
-    return this.http.get<Country>(url, {params: this.httpParams});
+    return this.http.get<Country>(url);
   }
 
   getCountryByRegion(name: string): Observable<Country[]> {

@@ -9,6 +9,18 @@
         ></app-country-input>
     </div>
 </div>
+
+<ul class="list-group" *ngIf="showSuggerences">
+    <li class="list-group-item list-group-item-action" (onClick)="searchSuggested(searchText)">
+        Search "{{searchText}}"
+    </li>
+    <li *ngFor="let suggestion of suggestedCountries" class="list-group-item list-group-item-action"
+        [routerLink]="['/country', suggestion.cca2]"    
+    >
+        {{suggestion.name.common}}
+    </li>
+</ul>
+
 <hr>
 
 <div class="alert alert-danger" *ngIf="thereIsError">
